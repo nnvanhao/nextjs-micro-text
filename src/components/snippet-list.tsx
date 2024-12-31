@@ -19,6 +19,14 @@ type Snippet = {
   };
 };
 
+
+type Category = {
+  id: string;
+  name: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
+};
+
 type Props = {
   categoryId?: string;
   search?: string;
@@ -50,7 +58,7 @@ const SnippetList = async ({ categoryId, search }: Props) => {
         >
           All
         </Link>
-        {categories.map((category, index) => (
+        {categories.map((category: Category, index: number) => (
           <Link
             href={`/category/${category?.id}`}
             key={index}
