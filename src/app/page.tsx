@@ -1,3 +1,15 @@
-export default function Home() {
-  return <div className="text-ellipsis bg-inherit">Text</div>;
+import SnippetList from "@/components/snippet-list";
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { search: string };
+}) {
+  const { search } = await searchParams;
+
+  return (
+    <div>
+      <SnippetList search={search} />
+    </div>
+  );
 }

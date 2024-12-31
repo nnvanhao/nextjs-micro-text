@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { CopyIcon, UserIcon } from "lucide-react";
+import { Toaster } from "sonner";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -24,9 +21,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistMono.variable} bg-gray-50 px-10 antialiased`}>
+        <header className="flex h-20 items-center justify-between border-b border-gray-200">
+          <div className="flex items-center justify-center gap-4">
+            <div className="flex cursor-pointer items-center gap-2">
+              <CopyIcon />
+              <h1 className="text-center text-2xl font-bold text-gray-700">
+                microtext
+              </h1>
+            </div>
+            <div className="h-[2rem] w-[1px] bg-gray-300" />
+            <span className="text-sm font-medium text-gray-400">
+              Short text for you
+            </span>
+          </div>
+          <div className="flex cursor-pointer items-center gap-2 rounded-md p-1 px-2 duration-300 hover:bg-gray-200">
+            <span className="text-md">Hi Tony</span>
+            <UserIcon />
+          </div>
+        </header>
+        <Toaster richColors position="top-right" />
         {children}
       </body>
     </html>
