@@ -28,7 +28,7 @@ const SnippetList = async ({ categoryId, search }: Props) => {
   const snippets = await getSnippets(search);
   const categories = await getCategories();
 
-  const filteredSnippets = snippets.filter((snippet) => {
+  const filteredSnippets = snippets.filter((snippet: Snippet) => {
     if (categoryId) {
       return snippet.category.id === categoryId;
     }
